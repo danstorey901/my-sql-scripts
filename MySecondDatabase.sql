@@ -6,7 +6,7 @@ create database BcDb;
 go
 use BcDb;
 go
- -- Create the table here REFERENCE SLIDE 207!!
+ -- Create the table here
  create table Customers (
 	Id int not null primary key identity(1,1),
 	Code varchar(10) unique not null,
@@ -28,18 +28,3 @@ go
 	('COST', 'Costco', 800.23)
 
  go
- --first alter command
- alter table Customers
-	add Updated DateTime;
-	-- if you want to create a new column thats not allowed to be null you must use 3 steps, make null, run, then update customer set
---step one --alter table Customers
-	--add Note varchar(30) null;
-
-/* step three */ alter table Customers
-	alter Column Note varchar(30) not null;
-
-/*step two*/update Customers set
-	Note = 'Default note',
-/*step four*/	Updated = getdate()
-
-Select * from Customers;

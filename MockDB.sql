@@ -48,11 +48,10 @@ go
  Insert into Vendors
 	(Code, Name, Address, City, State, Zip, Phone, Email)
 	values
-	('AMAZ', 'Amazon', 20.00),
-	('MSFT', 'Microsoft', 30.01),
-	('TARG', 'Target', 40.09),
-	('BBUY', 'BestBuy', 483.10),
-	('COST', 'Costco', 800.23)
+	('AMAZ', 'Amazon', '1234WAY', 'Amelia','OH','45105' ),
+	('MSFT', 'Microsoft','4567TOO', 'Madisonville', 'OH', '45245'),
+	('KRG', 'KROGER', '8910E', 'Oakley', 'OH', '45204'),
+	('COST', 'Costco', '1112Z', 'Cincinnati', 'OH', '45226');
 
  go
 
@@ -67,17 +66,16 @@ go
 	VendorId int not null
 			foreign key references Vendors(Id),
 	Created datetime not null default getdate(),
-	),
+	)
  go
  -- Do your inserts here
  Insert into Products
 	(Partnbr, Name, Price, Unit, Photopath, VendorId, Created)
 	values
-	('AMAZ', 'Amazon', 20.00),
-	('MSFT', 'Microsoft', 30.01),
-	('TARG', 'Target', 40.09),
-	('BBUY', 'BestBuy', 483.10),
-	('COST', 'Costco', 800.23)
+	('23523', 'Widget', 20.00),
+	('87667', 'Wadget', 30.01),
+	('099090090', 'Kroger', 40.09),
+	('1001010101001', 'Costco', 800.23)
 
  go
 
