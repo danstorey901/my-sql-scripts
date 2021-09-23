@@ -19,14 +19,16 @@ go
 	IsAdmin bit not null default 0,
 	Created datetime not null default getdate()
 	)
+	--drop table if exists Users;
  go
  -- User Insert
  Insert Users (Username, Password, Firstname, Lastname, Phone, Email, IsReviewer, IsAdmin)
 	values
-	('sa', 'sa', 'Systems', 'Admin', 1, 1),
-	('ra', 'ra', 'Systems', 'Reviewer', 1, 0),
-	('ua1', 'ua', 'Systems 1', 'User', 0, 0),
-	('ua2', 'ua', 'Systems 2', 'User', 0, 0);
+	('sa', 'sa', 'Systems', 'Admin', '513-222-2222', 'hotmail@mail.com', 1, 1),
+	('ra', 'ra', 'Systems', 'Reviewer', '513-222-2223', 'hhotmaill@mail.com', 1, 0),
+	('ua1', 'ua', 'Systems 1', 'User', '513-333-3333', 'mailing@mailing.com', 0, 0),
+	('ua2', 'ua', 'Systems 2', 'User', '444-444-4444', 'EEE@EEEEMAIL.COM', 0, 0);
+
 
 	go
 
@@ -48,10 +50,10 @@ go
  Insert into Vendors
 	(Code, Name, Address, City, State, Zip, Phone, Email)
 	values
-	('AMAZ', 'Amazon', '1234WAY', 'Amelia','OH','45105' ),
-	('MSFT', 'Microsoft','4567TOO', 'Madisonville', 'OH', '45245'),
-	('KRG', 'KROGER', '8910E', 'Oakley', 'OH', '45204'),
-	('COST', 'Costco', '1112Z', 'Cincinnati', 'OH', '45226');
+	('AMAZ', 'Amazon', '1234WAY', 'Amelia','OH','45105', '111-111-1111', 'amz@amz.com'),
+	('MSFT', 'Microsoft','4567TOO', 'Madisonville', 'OH', '45245','222-222-2222', 'micro@soft.com'),
+	('KRG', 'KROGER', '8910E', 'Oakley', 'OH', '45204', '333-333-3333', 'kroger@krogers.com'),
+	('COST', 'Costco', '1112Z', 'Cincinnati', 'OH', '45226', '444-444-4444', 'cost@costco.com');
 
  go
 
@@ -70,12 +72,12 @@ go
  go
  -- Do your inserts here
  Insert into Products
-	(Partnbr, Name, Price, Unit, Photopath, VendorId, Created)
+	(Partnbr, Name, Price, Unit, VendorId)
 	values
-	('23523', 'Widget', 20.00),
-	('87667', 'Wadget', 30.01),
-	('099090090', 'Kroger', 40.09),
-	('1001010101001', 'Costco', 800.23)
+	('23523', 'Widget', 20.00, 'each', 1),
+	('87667', 'Wadget', 30.01, 'each', 2),
+	('099090090', 'Window', 40.09, 'each', 3),
+	('1001010101001', 'Steak', 800.23, 'each', 4);
 
  go
 
@@ -95,13 +97,12 @@ go
  go
  -- Do your inserts here
  Insert into Requests
-	(Description, Justification, Rejectonreason, Deliverymode, Status, Total, UserId)
+	(Description, Justification, UserId)
 	values
-	('AMAZ', 'Amazon', 20.00),
-	('MSFT', 'Microsoft', 30.01),
-	('TARG', 'Target', 40.09),
-	('BBUY', 'BestBuy', 483.10),
-	('COST', 'Costco', 800.23)
+	('Need Widget', 'Need to make Wadgets', 1),
+	('Need Wadget', 'Need to make Widgets', 2),
+	('Windows', 'Birds keep flying in', 3),
+	('Steaks for lunch', 'McDonalds was closed', 4)
 
  go
 
@@ -121,11 +122,10 @@ go
  Insert into Requestlines
 	(Requestid, Productid, Quantity)
 	values
-	('AMAZ', 'Amazon', 20.00),
-	('MSFT', 'Microsoft', 30.01),
-	('TARG', 'Target', 40.09),
-	('BBUY', 'BestBuy', 483.10),
-	('COST', 'Costco', 800.23)
+	(1, 1, 20.00),
+	(2, 2, 30.00),
+	(3, 3, 483.00),
+	(4, 4, 800.00)
 
 
 	/*
